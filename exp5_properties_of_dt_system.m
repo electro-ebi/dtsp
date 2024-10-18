@@ -105,4 +105,38 @@ stem(n, y_shifted_output, 'b', 'LineWidth', 1.5);
 xlabel('Time');
 ylabel('Amplitude');
 title('Shifted Output Signal');
+
+
+figure;
+
+n = 0:0.1:20;          % Time vector
+h = 0.5 * exp(-n);     % Impulse response of the system
+
+sumCoefficients = 0;   % Initialize the sum to 0
+
+% Loop through the impulse response coefficients
+for k = 1:length(h)
+    if abs(h(k)) < 1e-6  % Stop if the coefficient is very small (close to 0)
+        break;
+    end
+    sumCoefficients = sumCoefficients + abs(h(k));  % Accumulate the sum
+end
+
+% Plot the impulse response
+stem(n, h);  
+title('Impulse Response');
+xlabel('Time');
+ylabel('Amplitude');
+grid on;
+
+% Display the sum of impulse response coefficients
+disp('The sum of impulse response coefficients is:');
+disp(sumCoefficients);
+
+% Check system stability
+if sumCoefficients > 5.0983e+8
+    disp('The system is UNSTABLE.');
+else
+    disp('The system is STABLE.');
+end
 grid on;
