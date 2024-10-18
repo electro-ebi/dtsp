@@ -105,7 +105,7 @@ stem(n, y_shifted_output, 'b', 'LineWidth', 1.5);
 xlabel('Time');
 ylabel('Amplitude');
 title('Shifted Output Signal');
-
+grid on;
 
 figure;
 
@@ -139,4 +139,4 @@ if sumCoefficients > 5.0983e+8
 else
     disp('The system is STABLE.');
 end
-grid on;
+
